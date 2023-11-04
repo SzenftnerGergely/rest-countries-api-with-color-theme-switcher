@@ -1,7 +1,11 @@
-import Image from 'next/image'
+import Nav from '@/components/Nav'
+import SearchBar from '@/components/SearchBar'
 
 export default function Home() {
   return (
-    <div></div>
+    <div>
+      <Nav />
+      <SearchBar />
+    </div>
   )
 }
