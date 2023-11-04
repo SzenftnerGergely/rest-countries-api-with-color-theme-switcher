@@ -3,7 +3,7 @@ import SearchBar from '@/components/SearchBar'
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Nav />
       <SearchBar />
     </div>
