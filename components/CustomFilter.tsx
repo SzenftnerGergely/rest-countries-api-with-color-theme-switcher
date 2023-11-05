@@ -5,17 +5,18 @@ import React, { Fragment, useState } from 'react'
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { BsChevronDown } from 'react-icons/bs';
+import { fetchCountries, updateSearchParams } from '@/utils/api';
+import { useRouter } from 'next/navigation';
 
-const countries = [
-    { id: 1, name: 'Africa', unavailable: false },
-    { id: 2, name: 'America', unavailable: false },
-    { id: 3, name: 'Asia', unavailable: false },
-    { id: 4, name: 'Europe', unavailable: true },
-    { id: 5, name: 'Oceania', unavailable: false },
-]
-
-const SearchBar = () => {
+const SearchBar = ({region, countries}: any) => {
     const [selectedCountry, setSelectedCountry] = useState(countries[0])
+    const router = useRouter()
+
+    const handleUpdateParams = (e: {region: string, name: string}) => {
+      const newPathName = updateSearchParams(region, e.name.toLocaleLowerCase())
+    
+      router.push(newPathName)
+    }
 
     return (
         <div className='max-w-[1440px] w-10/12 flex justify-between my-10 items-center'>
@@ -28,7 +29,13 @@ const SearchBar = () => {
                 </div>
 
                 <div className='w-fit'>
-                    <Listbox value={selectedCountry} onChange={setSelectedCountry}>
+                    <Listbox 
+                        value={selectedCountry} 
+                        onChange={(e) => {
+                            setSelectedCountry(e)
+                            handleUpdateParams(e)
+                          }}
+                    >
                         <div className='relative w-fit z-10'>
                             <Listbox.Button className="flex items-center custom-filter__btn">
                                 {selectedCountry.name}
