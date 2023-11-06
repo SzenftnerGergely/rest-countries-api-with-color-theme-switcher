@@ -3,20 +3,13 @@ import Nav from '@/components/Nav'
 import CustomFilter from '@/components/CustomFilter'
 import { fetchCountries } from '@/utils/api'
 import { options } from '@/constants'
-
-type FilterProps = {
-  region: string,
-}
-
-type HomeProps = {
-  searchParams: FilterProps;
-}
+import { HomeProps } from '@/types/models'
 
 
 export default async function Home({ searchParams }: HomeProps) {
 
   const allCountries = await fetchCountries({
-    region: searchParams.region || "asia"
+    region: searchParams.region || "africa"
   })
 
   return (

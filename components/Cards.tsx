@@ -1,19 +1,6 @@
 import React from 'react'
 import Image from "next/image"
-
-type CountryProps = {
-    country: {
-        flags: {
-            svg: string
-        }
-        name: {
-            common: string
-        }
-        population: number
-        region: string
-        capital: string
-    }
-}
+import { CountryProps } from '@/types/models'
 
 const Cards = ({ country }: CountryProps) => { 
     const { flags, name, population, region, capital } = country

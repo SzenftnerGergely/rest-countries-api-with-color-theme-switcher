@@ -7,17 +7,9 @@ import { CheckIcon } from '@heroicons/react/20/solid'
 import { BsChevronDown } from 'react-icons/bs';
 import { updateSearchParams } from '@/utils/api';
 import { useRouter } from 'next/navigation';
+import { CustomFilterProps } from '@/types/models';
 
-type OptionProps = {
-    id: number 
-    name: string
-    title: string
-}
 
-type CustomFilterProps = {
-    title: string;
-    options: OptionProps[];
-}
 
 const CustomFilter = ({ title, options }: CustomFilterProps) => {
     const [selectedCountry, setSelectedCountry] = useState(options[0])
